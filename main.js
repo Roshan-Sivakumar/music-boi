@@ -11,7 +11,7 @@ function setup() {
     video.hide();
 
     posenet = ml5.poseNet(video, modelLoaded)
-    posenet.on("pose", gotResult)
+    posenet.on("pose", gotResults)
 }
 
 function preload() {
@@ -27,10 +27,11 @@ function modelLoaded(){
     console.log("w");
 }
 
-function gotResult(results){
+function gotResults(results){
     if(results.length > 0){
         leftwristy = results[0].pose.leftWrist.y
         rightwristy = results[0].pose.rightWrist.y
+        console.log(results)
     } else {
         console.log("DATA not found: array, results")
     }
